@@ -1,9 +1,27 @@
 
-CREATE DATABASE NorthwindSample;
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'NorthwindSample')
+BEGIN
+    CREATE DATABASE NorthwindSample;
+END
 GO
 
 USE NorthwindSample;
 GO
+
+
+DROP TABLE IF EXISTS Order_Detail;
+DROP TABLE IF EXISTS [Order];
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Supplier;
+DROP TABLE IF EXISTS Category;
+DROP TABLE IF EXISTS Shipper;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS EmployeeTerritory;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS Territory;
+DROP TABLE IF EXISTS Region;
+GO
+
 
 CREATE TABLE Region (
     RegionID INT PRIMARY KEY, 

@@ -19,6 +19,12 @@ LEFT JOIN
 LEFT JOIN 
     Region r ON t.RegionID = r.RegionID
 WHERE 
-    r.RegionID = 1 OR r.RegionID IS NULL
+    NOT EXISTS (
+        SELECT 1
+        FROM EmployeeTerritory et2
+        JOIN Territory t2 ON et2.TerritoryID = t2.TerritoryID
+        WHERE et2.EmployeeID = e.EmployeeID
+        AND t2.RegionID != 1  
+    )
 ORDER BY 
     e.EmployeeID;
